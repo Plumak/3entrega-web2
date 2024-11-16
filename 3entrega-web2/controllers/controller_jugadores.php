@@ -31,7 +31,6 @@ function ObtenerJugadores($req){
 
 function ObtenerJugador($req){
     $id = $req->params->id;
-    if(!empty($id)){
     $jugador = $this->model->ObtenerJugador($id);
     if (!empty($jugador)){
     return $this->view->response($jugador, 200);
@@ -40,10 +39,7 @@ function ObtenerJugador($req){
         return $this->view->response("El jugador con el id ". $id . "no existe", 404);
     }
 }
-else{
-    return $this->view->response("Error el id esta vacio", 400);
-}
-}
+
 function EliminarJugador($req){
     $id = $req->params->id;
     if(!empty($id)){
