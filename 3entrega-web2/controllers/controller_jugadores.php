@@ -72,7 +72,6 @@ $this->view->response("Jugador creado con exito con el id = " . $nuevo_jugador, 
 }
 function EditarJugador($req){
     $id_jugador = $req->params->id;
-
     if(!empty($id_jugador)){
     $jugador_encontrado = $this->model->ObtenerJugador($id_jugador);
 
