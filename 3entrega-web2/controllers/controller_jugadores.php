@@ -58,10 +58,10 @@ $edad = $req->body->edad;
 $id_club = $req->body->id_club;
 
 $nuevo_jugador = $this->model->CrearJugador($nombre,$apellido,$edad,$id_club);
-$this->view->response("Jugador creado con exito con el id =" . " " . $nuevo_jugador, 201);
+$this->view->response("Jugador creado con exito con el id = " . $nuevo_jugador, 201);
     }
     else{
-        return $this->view->response("Falta completar datos", 404);
+        return $this->view->response("Falta completar datos", 400);
     }
 }
 function EditarJugador($req){
@@ -78,31 +78,12 @@ function EditarJugador($req){
         return $this->view->response("Jugador editado correctamente", 200);
         }
         else{
-            return $this->view->response("Falta completar datos", 404);
+            return $this->view->response("Falta completar datos", 400);
         } 
     }
     else{
      return $this->view->response("No existe un jugador con ese id", 404);   
     }
-
-}
-function OrdenarPorEdad($req){
-    if(!empty($req->params->orden)){
-        $ordenar = $req->params->orden;
-        if($ordenar == "edad"){
-        $orden_obtenido = $this->model->Ordenar($ordenar);
-        if(!empty($orden_obtenido)){
-            return $this->view->response("Jugadores ordenados por edad" . " " . $orden_obtenido, 200);
-        }
-        }
-        else{
-            return $this->view->response("No existe el orden pedido", 404);
-        }
-        }
-        else{
-            return $this->view->response("Filtro vacio", 404);
-
-        }
 
 }
 }
